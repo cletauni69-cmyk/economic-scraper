@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: economic-indicators-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+```
+
+4. 点击 **"Commit new file"**
+
+---
+
+#### 📄 文件3：Procfile
+
+1. **"Add file"** → **"Create new file"**
+2. 文件名：`Procfile`（注意大小写，没有扩展名）
+3. 内容：
+```
+web: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2
